@@ -44,3 +44,37 @@ tx_ajaxtest_ajaxfoo {
         view =< plugin.tx_ajaxtest.view
     }
 }
+
+tx_ajaxtest_ajaxfooblang = PAGE
+tx_ajaxtest_ajaxfooblang {
+    typeNum = 1702
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type:application/json
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+    }
+
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Ajaxtest
+        pluginName = Blang
+        vendorName = CedricZiel
+        controller = Blang
+        action = plain
+        switchableControllerActions {
+            Blang {
+                1 = plain
+                2 = foo
+                3 = bar
+            }
+        }
+
+        settings =< plugin.tx_ajaxtest.settings
+        persistence =< plugin.tx_ajaxtest.persistence
+        view =< plugin.tx_ajaxtest.view
+    }
+}

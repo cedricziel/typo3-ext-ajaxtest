@@ -5,10 +5,10 @@ namespace CedricZiel\Ajaxtest\Controller;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * Class BlingController
+ * Class BlangController
  * @package CedricZiel\AjaxTest\Controller
  */
-class BlingController extends ActionController
+class BlangController extends ActionController
 {
     /**
      * Do nothing. Just render the standard object
@@ -25,7 +25,7 @@ class BlingController extends ActionController
     {
         $object = $this->createSecretObject();
         $object->data = [
-            'message' => 'Bling Foo',
+            'message' => 'Blang Foo',
         ];
 
         return json_encode($object);
@@ -49,7 +49,7 @@ class BlingController extends ActionController
     {
         $object = $this->createSecretObject();
         $object->data = [
-            'message' => 'Bling Bar',
+            'message' => 'Blang Bar',
         ];
 
         return json_encode($object);
