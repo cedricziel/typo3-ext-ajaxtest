@@ -1,0 +1,46 @@
+plugin.tx_ajaxtest {
+    persistence {
+
+    }
+    settings {
+
+    }
+
+    view {
+        templateRootPaths.10 = EXT:ajaxtest/Resources/Private/Templates/
+    }
+}
+
+tx_ajaxtest_ajaxfoo = PAGE
+tx_ajaxtest_ajaxfoo {
+    typeNum = 1701
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type:application/json
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+    }
+
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Ajaxtest
+        pluginName = Bling
+        vendorName = CedricZiel
+        controller = Bling
+        action = plain
+        switchableControllerActions {
+            Bling {
+                1 = plain
+                2 = foo
+                3 = bar
+            }
+        }
+
+        settings =< plugin.tx_ajaxtest.settings
+        persistence =< plugin.tx_ajaxtest.persistence
+        view =< plugin.tx_ajaxtest.view
+    }
+}

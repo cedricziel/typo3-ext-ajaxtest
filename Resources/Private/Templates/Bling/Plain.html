@@ -1,0 +1,29 @@
+<div class="tx_ajaxtest">
+    <div id="ajaxContent"></div>
+    <hr>
+    <a href="{f:uri.action(action: 'foo', absolute: false, pageType: 1701)}" id="requestFoo">Foo</a>
+    <hr>
+    <a href="{f:uri.action(action: 'bar', absolute: false, pageType: 1701)}" id="requestBar">Bar</a>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"
+            integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+    <script>
+        jQuery(function($) {
+            var $ajaxcontent = $('#ajaxContent');
+
+            var clickHandler = function(e) {
+                e.preventDefault();
+
+                var href = $(this).attr('href');
+                var rPromise = $.ajax(href);
+                rPromise.then(function(response) {
+                    var message = response.timestamp + ': ' + response.data.message + '<br/>';
+                    $ajaxcontent.append(message);
+                });
+            };
+
+            $('#requestFoo').click(clickHandler);
+            $('#requestBar').click(clickHandler);
+        });
+    </script>
+</div>
